@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Sticky Notes</title>
+   <link rel="stylesheet" href="stickyNotes.css">
+</head>
+<body>
+   <div class="container">   
+      <div class="left-container">
+         <div class="input-box">
+            <textarea id="txt-box" cols="100" rows="18" placeholder="
+            
+            
+            // From Brain to paper with Sticky Notes. //"  ></textarea>
+         
+            <div class="color-box">
+               <label for="color" style="font-size: 25px; color:azure; font-weight: bold;"> Select Color: </label>
+
+               <input type="color" value="#f08080" id="color" style="height: 40px; width: 200px;">
+            </div>
+            <br>
+            <div class="buttons">
+               <button> Add Note </button>
+            </div>   
+         </div>
+         
+      </div>
+
+      <div class="right-container">
+         
+         <h2> List of your Sticky Notes </h2>
+         
+         <div class="notes-list"></div>
+         
+         <span class="no-note">
+            <p> Please add a note.... </p>
+         </span>
+
+      </div>
+   </div>   
+
+   <script src="stickyNotes.js"></script>
+</body>
+</html>
