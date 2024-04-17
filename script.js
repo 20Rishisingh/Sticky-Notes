@@ -1,41 +1,39 @@
-let tc = document.querySelector(".input-box").children;
 
-let btn = document.querySelector("button");
-
-let list = document.querySelector(".notes-list");
-
-let btn2 = document.querySelectorAll(".btn2");
-
-btn.addEventListener("click", () => {
-   let colorVal = tc[1].children[0].value;
-   if(tc[0] === ""){
-      alert("!! Enter something as sticky note !!");
-      return;
-   }
-
-   makeNote(tc[0].value, colorVal);
-      tc[0].value = "";
-      document.querySelector(".no-note").style.display="none";
-});
-
-function removeNote(){
-   let rc = document.querySelector(".right-container");
-
-   rc.addEventListener("click", (e) => {
-      // if(e.target.innerText === "X"){
-      if(e.target.classList.contains("btn2")){   
-         e.target.parentElement.remove();
-      }
+document.addEventListener("DOMContentLoaded", function(){
+   
+   // Add event listener to the "Add Note" button
+   document.getElementById("add").addEventListener("click", function() {
+      addNote();
    });
-}
 
-function makeNote(text, color){
-   let div = document.createElement("div");
-   div.innerHTML = `<p> ${text} </p>
-   <button class = "btn2"> X </button>`;
-   div.style.backgroundColor = color;
-   list.appendChild(div);
-   removeNote();
-}
+   // Function to add a new sticky note
+   function addNote(){
+      // Get user input values
+      var title = document.getElementById("title").value;
+      var content = document.getElementById("txt-box").value;
+      var color = document.getElementById("color").value;
 
-removeNote();
+      // Create a new note element
+      var note = document.createElement("div");
+      note.classList.add("notes");
+      note.style.backgroundColor = color;
+
+      // Add title and content to the note
+      var noteContent = document.createElement("div");
+      noteContent.innerHTML = "<h2>" + title + "</h2><p>" + content + "</p>";
+      note.appendChild(noteContent);
+
+      // Add delete button to the note
+      var deleteButton = document.createElement("button");
+      deleteButton.textContent = "X";
+      deleteButton.classList.add("delete");
+      deleteButton.addEventListener("click", function() {
+         note.remove();
+      });
+      note.appendChild(deleteButton);
+
+      // Append the note to the lower-container
+      var notesContainer = document.getElementById("notes-container");
+      notesContainer.appendChild(note);
+   }
+});
